@@ -1,0 +1,10 @@
+{
+  "name": "trading-learning-platform",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "test": "npm run test --workspace @tlp/trading-core",
+    "typecheck": "npm run typecheck --workspace @tlp/trading-core"
+  }
+}
