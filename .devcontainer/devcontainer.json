@@ -1,0 +1,8 @@
+{
+  "name": "TradeLab",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "postCreateCommand": "npm install",
+  "forwardPorts": [3000],
+  "portsAttributes": { "3000": { "label": "Web app", "onAutoForward": "openBrowser" } },
+  "customizations": { "vscode": { "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"] } }
+}

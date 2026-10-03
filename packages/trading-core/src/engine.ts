@@ -350,3 +350,11 @@ export function resetAccount(state: EngineState, ctx: EngineContext): EngineResu
   next = addLedger(next, ctx, "RESET", delta, null);
   return { state: next, events: [{ type: "ACCOUNT_RESET", refId: "account", message: "Demo account reset" }] };
 }
+
+/** Unrealized P&L (USD, rounded to cents) of one open position at the current quote. */
+export function positionPnl(p: Position, ctx: EngineContext): string {
+  const inst = ctx.instruments[p.symbol];
+  if (!inst || !ctx.quotes[p.symbol]) return "0";
+  const q = getQuote(ctx, p.symbol);
+  return str(roundMoney(pnlAt(inst, p.side, D(p.entryPrice), exitPriceFor(p.side, q), D(p.quantity), ctx)));
+}
